@@ -1,0 +1,29 @@
+:root {
+    --first-color      : rgb(19, 137, 185);
+    --first-color-alt  : rgb(27, 112, 171);
+    --second-color     : rgb(79, 116, 133);
+    --second-color-alt : rgb(67, 95, 134);
+    --third-color      : rgb(252, 66, 56);
+    --third-color-alt  : rgb(238, 44, 34);
+    --accent-color     : rgb(245, 169, 19);
+    --accent-color-alt : rgb(226, 151, 1);
+    --dark-color       : rgb(40, 45, 49);
+    --dark-color-alt   : rgb(20, 22, 24);
+    --border-color     : rgb(223, 224, 224);
+    --text-color       : rgb(83, 87, 90);
+    --text-color-alt   : rgb(99, 100, 101);
+    --white-color      : rgb(255, 255, 255);
+    --black-color      : rgb(0, 0, 0);
+    --alert-color      : rgb(224, 51, 51);
+    --alert-color-alt  : rgb(206, 44, 44);
+
+    --font-family : 'EXO', sans-serif;
+
+    --radius    : 10px;
+    --z-back    : -10;
+    --z-normal  : 1;
+    --z-tooltip : 10;
+    --z-fixed   : 100;
+    --z-modal   : 1000;
+    --z-loader  : 10000;
+}

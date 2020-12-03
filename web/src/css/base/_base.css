@@ -1,0 +1,69 @@
+*, *::before, *::after {
+    box-sizing: border-box !important;
+}
+
+body, html {
+    font-family: var(--font-family) !important;
+}
+
+.swal2-popup {
+    border-radius: var(--radius) !important;
+}
+
+.swal2-title p {
+    font-family: var(--font-family) !important;
+    font-size: 1.2rem !important;
+    color: var(--text-color) !important;
+    font-weight: normal !important;
+    margin: 0 !important;
+}
+
+.swal2-actions {
+    --radius: 5px;
+    margin-top: 0 !important;
+}
+
+.swal2-actions .swal2-styled {
+    outline: none !important;
+    box-shadow: none !important;
+    font-size: 1.1rem !important;
+    text-transform: initial !important;
+    padding: .5rem .75rem !important;
+    border-radius: var(--radius) !important;
+    cursor: pointer !important;
+}
+
+.swal2-styled.swal2-confirm {
+    background: var(--first-color) !important;
+    color: var(--white-color) !important;
+    border: 1px solid var(--first-color) !important;
+}
+
+.swal2-styled.swal2-confirm:hover:not(:disabled) {
+    background: var(--first-color-alt) !important;
+    color: var(--white-color) !important;
+    border-color: var(--first-color-alt) !important;
+}
+
+.swal2-styled.swal2-cancel {
+    background: var(--white-color) !important;
+    border: 1px solid var(--first-color) !important;
+    color: var(--first-color) !important;
+}
+
+.swal2-styled.swal2-cancel:hover:not(:disabled) {
+    background: var(--white-color-alt) !important;
+    border-color: var(--first-color-alt) !important;
+    color: var(--first-color-alt) !important;
+}
+
+.swal2-actions .swal2-styled:disabled {
+    opacity: .85 !important;
+    cursor: not-allowed !important;
+}
+
+@media only screen and (max-width: 996px) {
+    *::-webkit-scrollbar {
+        display: none;
+    }
+}

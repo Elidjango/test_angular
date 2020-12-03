@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ngx-toastr/toastr.css";
+
+/* Config */
+@import "css/base/_base.css";
+@import "css/config/_variables.css";
+
+/* Layout */
+@import "css/layout/_layout.css";
+
+/* Components */
+@import "css/components/_buttons.css";
+@import "css/components/_forms.css";
+@import "css/components/_carousel.css";
+
+/* Font Family */
+@import "css/theme/_tipografia.css";
