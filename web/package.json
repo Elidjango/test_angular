@@ -32,6 +32,7 @@
     "moment": "^2.29.1",
     "ngx-geoautocomplete": "^0.1.1",
     "ngx-google-place-autocomplete": "0.0.3",
+    "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^12.1.0",
     "rxjs": "~6.5.4",
     "rxjs-compat": "^6.5.5",

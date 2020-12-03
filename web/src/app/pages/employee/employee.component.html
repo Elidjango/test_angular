@@ -6,10 +6,10 @@
         <form #EmployeeForm="ngForm" (ngSubmit)="AddEmployee(EmployeeForm)" class="card-app">
             <div class="row">
                 <div class="col-12 col-md-4">
-                    <input type="hidden" id="id_usu" name="id_usu" #idusu="ngModel" [(ngModel)]="employeeService.SelectedEmployee.id_usu">
+                    <input *ngIf="textButton === 'Update'" type="hidden" id="id_usu" name="id_usu" #idusu="ngModel" [(ngModel)]="employeeService.SelectedEmployee.id_usu">
                     <div class="form-group">
-                        <label for="position_usu">Job name</label>
-                        <input type="text" class="form-control" id="position_usu" name="position_usu" #positionusu="ngModel" [(ngModel)]="employeeService.SelectedEmployee.position_usu" autocomplete="off" placeholder="...">
+                        <label for="username_usu">Username</label>
+                        <input type="text" class="form-control" id="username_usu" name="username_usu" #usernameusu="ngModel" [(ngModel)]="employeeService.SelectedEmployee.username_usu" autocomplete="off" placeholder="...">
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
@@ -20,8 +20,8 @@
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="form-group">
-                        <label for="username_usu">Username</label>
-                        <input type="text" class="form-control" id="username_usu" name="username_usu" #usernameusu="ngModel" [(ngModel)]="employeeService.SelectedEmployee.username_usu" autocomplete="off" placeholder="...">
+                        <label for="position_usu">Job name</label>
+                        <input type="text" class="form-control" id="position_usu" name="position_usu" #positionusu="ngModel" [(ngModel)]="employeeService.SelectedEmployee.position_usu" autocomplete="off" placeholder="...">
                     </div>
                 </div>
             </div>
@@ -37,25 +37,26 @@
         <table class="table table-striped table-responsive card-app">
             <thead>
                 <tr>
-                    <th scope="col" class="w30">Job name</th>
+                    <th scope="col" class="w30">Username</th>
                     <th scope="col" class="w17-5">Age</th>
-                    <th scope="col" class="w17-5">Username</th>
+                    <th scope="col" class="w17-5">Job name</th>
                     <th scope="col" class="w17-5">Date/Create</th>
                     <th scope="col" class="w17-5">Date/Update</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let emp of listEmp; let i = index">
-                    <td class="username">#{{ i + 1 }} {{ emp.position_usu }}</td>
+                <tr *ngFor="let emp of listEmp | paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: listEmp.length }; let i = index">
+                    <td class="username">{{ emp.username_usu }}</td>
                     <td>{{ emp.age_usu }}</td>
-                    <td>{{ emp.username_usu }}</td>
+                    <td>{{ emp.position_usu }}</td>
                     <td>{{ FormatDate(emp.date_create) }}</td>
-                    <td>{{ FormatDate(emp.date_update) }}</td>
+                    <td>{{ emp.date_create === emp.date_update ? 'Not modified' : FormatDate(emp.date_update) }}</td>
                     <td>
                         <div class="boxOptions">
                             <span (click)="UpdateEmployee(emp)" class="item fa fa-pencil"></span>
-                            <span (click)="DeleteEmployee(emp)" class="item fa fa-trash"></span>
+                            <span *ngIf="textButton === 'Update'" class="item fa fa-trash _grey"></span>
+                            <span *ngIf="textButton != 'Update'" (click)="DeleteEmployee(emp)" class="item fa fa-trash"></span>
                         </div>
                     </td>
                 </tr>
@@ -63,6 +64,13 @@
                     <td colspan="6" class="text-center msg"><span class="fa fa-info-circle"></span> Employees not found...</td>
                 </tr>
             </tbody>
+
+            <pagination-controls
+                (pageChange)="p = $event"
+                responsive="true"
+                previousLabel="Previous"
+                nextLabel="Next"
+            ></pagination-controls>
         </table>
     </div>
 </div>

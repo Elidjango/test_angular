@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from "../../services/employee.service";
 
 import * as moment from 'moment';
-import * as Swal from 'sweetalert2';
+import swal from 'sweetalert2';
 import { Employee } from '../../interface/employee';
 import { NgForm } from '@angular/forms';
 
@@ -14,6 +14,9 @@ import { NgForm } from '@angular/forms';
 })
 export class EmployeeComponent implements OnInit {
   listEmp: any = [];
+  p: number = 1;
+  pageSize: number = 5;
+
   btnDisabled = false;
   textButton = "Save";
   ShowToast = false;
@@ -30,7 +33,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   FormatDate(date) {
-    return moment(date).format("dddd DD, YYYY - h:mm a");
+    return moment(date).fromNow();
   }
 
   clearForm(form?: NgForm) {
@@ -48,74 +51,40 @@ export class EmployeeComponent implements OnInit {
       username: form.value.username_usu,
     }
 
-    if (form.value.position_usu === "") {
-      this.TitleToast = "Error";
-      this.MessageToast = "The name of the work is empty, please complete the field.";
-      this.ShowToast = true;
-
-      setTimeout(() => {
-        this.TitleToast = "";
-        this.MessageToast = "";
-        this.ShowToast = false;
-      }, 3500);
-
+    if (form.value.username_usu === "") {
+      swal.fire('The username is empty, please complete the field.', '', 'error');
       return false;
     }
 
     if (form.value.age_usu === "") {
-      this.TitleToast = "Error";
-      this.MessageToast = "Age is mandatory, please complete the field.";
-      this.ShowToast = true;
-
-      setTimeout(() => {
-        this.TitleToast = "";
-        this.MessageToast = "";
-        this.ShowToast = false;
-      }, 3500);
-
+      swal.fire('Age is mandatory, please complete the field.', '', 'error');
       return false;
     }
 
-    if (form.value.username_usu === "") {
-      this.TitleToast = "Error";
-      this.MessageToast = "The username is empty, please complete the field.";
-      this.ShowToast = true;
-
-      setTimeout(() => {
-        this.TitleToast = "";
-        this.MessageToast = "";
-        this.ShowToast = false;
-      }, 3500);
-
+    if (form.value.position_usu === "") {
+      swal.fire('The name of the work is empty, please complete the field.', '', 'error');
       return false;
     }
 
     if (form.value.position_usu != "" && form.value.age_usu != "" && form.value.username_usu != "") {
       console.log("Is works valid!");
-      if (form.value.id_usu != "") {
-        obj["date_update"] = moment(new Date()).format("DD-MM-YYYY HH:mm");
+      if (this.textButton === "Update") {
+        obj["date_update"] = moment(new Date()).format("YYYY-MM-DD HH:mm");
         
         this._EmployeeService.PutEmployee(form.value.id_usu, obj).subscribe(res => {
           this.clearForm(form);
           this.btnDisabled = false;
-          this.TitleToast = "Success";
-          this.MessageToast = "The employee was updated successfully.";
-          this.ShowToast = true;
           this.textButton = "Save";
+          swal.fire('The employee was updated successfully.', '', 'success');
           this.getEmployee();
-    
-          setTimeout(() => {
-            this.TitleToast = "";
-            this.MessageToast = "";
-            this.ShowToast = false;
-          }, 2500);
         });
       } else {
-        obj["date_create"] = moment(new Date()).format("DD-MM-YYYY HH:mm");
-        obj["date_update"] = moment(new Date()).format("DD-MM-YYYY HH:mm");
+        obj["date_create"] = moment(new Date()).format("YYYY-MM-DD HH:mm");
+        obj["date_update"] = moment(new Date()).format("YYYY-MM-DD HH:mm");
   
         this._EmployeeService.PostEmployee(obj).subscribe(res => {
           this.clearForm(form);
+          swal.fire('the employee was successfully registered.', '', 'success');
           this.getEmployee();
         });
       }
@@ -142,16 +111,22 @@ export class EmployeeComponent implements OnInit {
 
   DeleteEmployee(emp) {
     if (emp.id_usu != "" || emp.id_usu != undefined || emp.id_usu != null) {
-      Swal.fire({
-        title: 'Are you sure you want to delete this record?',
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: 'Save'
-      }).then((result) => {
+      swal.fire(
+        {
+          title: 'Are you sure you want to delete this record?',
+          icon: 'info',
+          html: ``,
+          showCloseButton: true,
+          showCancelButton: true,
+          focusConfirm: false,
+          confirmButtonText: 'OK',
+          cancelButtonText: 'Cancel',
+        }
+      ).then((result) => {
         if (result.isConfirmed) {
           this._EmployeeService.DeleteEmployee(emp.id_usu).subscribe(res => {
             this.getEmployee();
-            Swal.fire('Delete success', '', 'success');
+            swal.fire('Delete success', '', 'success');
           });
         }
       })

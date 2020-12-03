@@ -1,1 +1,18 @@
-<p>lobby works!</p>
+<div class="row">
+    <div class="col-12">
+        <img class="banner" src="assets/images/banner.png" alt="banner">
+    </div>
+    <div class="col-12 col-md-3">
+        <div class="card card-count">
+            <span class="icon fa fa-users"></span>
+            <p class="cant">{{ listEmp?.length }}</p>
+        </div>
+    </div>
+    <div *ngIf="listEmp?.length" class="col-12 col-md-4">
+        <p class="title-app">Last record.</p>
+        <div class="end-user">
+            <img src="assets/images/logo-circle.png" [alt]="listEmp[0].username_usu">
+            <p>{{ listEmp[0].username_usu }}<br><span class="date">{{ FormatDate(listEmp[0].date_update) }}</span></p>
+        </div>
+    </div>
+</div>

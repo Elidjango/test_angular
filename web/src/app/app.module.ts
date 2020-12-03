@@ -15,6 +15,8 @@ import { HeaderComponent } from './pages/components/header/header.component';
 import { LobbyComponent } from './pages/lobby/lobby.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,8 @@ import { EmployeeComponent } from './pages/employee/employee.component';
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule
   ],
   providers: [NgbActiveModal, { provide: LocationStrategy, useClass: HashLocationStrategy }],
 
