@@ -29,6 +29,7 @@
     "angular-google-map": "0.0.2",
     "angular-responsive-carousel": "^1.5.11",
     "angular2-google-maps": "^0.17.0",
+    "moment": "^2.29.1",
     "ngx-geoautocomplete": "^0.1.1",
     "ngx-google-place-autocomplete": "0.0.3",
     "ngx-toastr": "^12.1.0",

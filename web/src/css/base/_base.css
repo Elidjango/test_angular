@@ -1,6 +1,14 @@
 *, *::before, *::after {
     box-sizing: border-box !important;
+    outline: none !important;
 }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none !important;
+}
+
+input[type=number] { -moz-appearance: textfield !important; }
 
 body, html {
     font-family: var(--font-family) !important;

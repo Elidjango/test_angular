@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  constructor(
+    public location: Location,
+  ) { }
 
   ngOnInit(): void {
     const _ContentNav = (<HTMLInputElement>document.querySelector(`#ToggleNav`));
@@ -34,6 +36,13 @@ export class HeaderComponent implements OnInit {
         console.log("CONTRAE - FALSE");
       }
     }
+  }
+
+  getTitle() {
+    const titlee = this.location.prepareExternalUrl(this.location.path());
+    const _t = titlee.replace("#/Web/", "");
+
+    return _t;
   }
 
   ToggleNav() {
