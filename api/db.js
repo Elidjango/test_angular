@@ -4,7 +4,7 @@ const knex = require('knex')({
         host: "localhost",
         user: "root",
         password: "",
-        database: "db_employee"
+        database: "db_test_angular"
     },
     pool: {
         min: 0,
