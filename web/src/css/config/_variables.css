@@ -19,6 +19,7 @@
 
     --font-family : 'EXO', sans-serif;
 
+    --width-nav-default: 250px;
     --radius    : 10px;
     --z-back    : -10;
     --z-normal  : 1;

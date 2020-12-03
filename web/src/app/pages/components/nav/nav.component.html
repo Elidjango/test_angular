@@ -1,1 +1,18 @@
-<p>nav works!</p>
+<div class="brand-app">
+    <img src="assets/images/logo.svg" alt="isotipo">
+</div>
+
+<ul class="nav-app">
+    <li class="item active">
+        <div (click)="RouterLink('/Web/Lobby')" class="link"><span class="fa fa-home"></span> Lobby</div>
+    </li>
+    <li class="item">
+        <div (click)="RouterLink('/Web/Employee')" class="link"><span class="fa fa-user"></span> Employee</div>
+    </li>
+</ul>
+
+<div class="nav-app--footer">
+    <li class="item">
+        <div class="link"><span class="fas fa-sign-out-alt"></span> Sign out</div>
+    </li>
+</div>
