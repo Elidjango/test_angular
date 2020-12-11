@@ -101,6 +101,9 @@ export class EmployeeComponent implements OnInit {
           return -1;
         }
       });
+    }, (err) => {
+      console.log(err);
+      swal.fire(err.name, err.message, 'error');
     });
   }
 
@@ -127,6 +130,9 @@ export class EmployeeComponent implements OnInit {
           this._EmployeeService.DeleteEmployee(emp.id_usu).subscribe(res => {
             this.getEmployee();
             swal.fire('Delete success', '', 'success');
+          }, (err) => {
+            console.log(err);
+            swal.fire(err.name, err.message, 'error');
           });
         }
       })
