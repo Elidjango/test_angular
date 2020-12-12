@@ -7,9 +7,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { EmployeeComponent } from './employee.component';
 import { TableComponent } from '../components/table/table.component';
 
+import { MomentPipe } from "../../pipes/moment.pipe";
 
 @NgModule({
   declarations: [
+    MomentPipe,
     EmployeeComponent,
     TableComponent
   ],

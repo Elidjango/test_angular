@@ -4,8 +4,11 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LobbyComponent } from './lobby.component';
 
+import { MomentPipe } from "../../pipes/moment.pipe"
+
 @NgModule({
   declarations: [
+    MomentPipe,
     LobbyComponent
   ],
   imports: [

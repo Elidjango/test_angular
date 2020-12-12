@@ -14,8 +14,8 @@
             <td class="username">{{ emp.username_usu }}</td>
             <td>{{ emp.age_usu }}</td>
             <td>{{ emp.position_usu }}</td>
-            <td>{{ FormatDate(emp.date_create) }}</td>
-            <td>{{ emp.date_create === emp.date_update ? 'Not modified' : FormatDate(emp.date_update) }}</td>
+            <td>{{ emp.date_create | moment:"fromNow" }}</td>
+            <td>{{ emp.date_create === emp.date_update ? 'Not modified' : emp.date_update | moment:"fromNow" }}</td>
             <td>
                 <div class="boxOptions">
                     <span (click)="_update(emp)" class="item fa fa-pencil"></span>

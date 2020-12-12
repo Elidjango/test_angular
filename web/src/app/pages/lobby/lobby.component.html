@@ -12,7 +12,7 @@
         <p class="title-app">Last record.</p>
         <div class="end-user">
             <img src="assets/images/logo-circle.png" [alt]="listEmp[0].username_usu">
-            <p>{{ listEmp[0].username_usu }}<br><span class="date">{{ FormatDate(listEmp[0].date_update) }}</span></p>
+            <p>{{ listEmp[0].username_usu }}<br><span class="date">{{ listEmp[0].date_update | moment:"fromNow" }}</span></p>
         </div>
     </div>
 </div>

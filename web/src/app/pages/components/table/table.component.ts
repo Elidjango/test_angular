@@ -23,10 +23,6 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  FormatDate(date) {
-    return moment(date).fromNow();
-  }
-
   _update(obj: any) {
     this.DataSelectedUpdate.emit(obj);
   }

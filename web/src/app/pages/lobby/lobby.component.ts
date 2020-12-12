@@ -27,8 +27,4 @@ export class LobbyComponent implements OnInit {
       });
     });
   }
-
-  FormatDate(date) {
-    return moment(date).fromNow();
-  }
 }
