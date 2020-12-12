@@ -8,8 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
-import { NavComponent } from './pages/components/nav/nav.component';
-import { HeaderComponent } from './pages/components/header/header.component';
+import { NavComponent } from './pages/shared/nav/nav.component';
+import { HeaderComponent } from './pages/shared/header/header.component';
 
 import { EmployeeModule } from './pages/employee/employee.module';
 import { LobbyModule } from './pages/lobby/lobby.module';

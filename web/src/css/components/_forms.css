@@ -1,0 +1,12 @@
+.filter-table {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-table .btn-app {
+    margin: 0;
+    margin-left: 1rem;
+}

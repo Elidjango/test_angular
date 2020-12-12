@@ -11,6 +11,9 @@
 /web/node_modules
 /api/node_modules
 
+# db config
+/api/db.js
+
 # profiling files
 /web/chrome-profiler-events*.json
 /web/speed-measure-plugin*.json

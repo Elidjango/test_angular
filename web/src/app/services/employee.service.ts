@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Employee } from '../interface/employee';
+import swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'

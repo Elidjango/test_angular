@@ -14,9 +14,7 @@ import { NgForm } from '@angular/forms';
 })
 export class EmployeeComponent implements OnInit {
   listEmp: any = [];
-  p: number = 1;
-  pageSize: number = 5;
-
+  
   btnDisabled = false;
   textButton = "Save";
   ShowToast = false;
@@ -30,10 +28,6 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmployee();
-  }
-
-  FormatDate(date) {
-    return moment(date).fromNow();
   }
 
   clearForm(form?: NgForm) {
@@ -92,6 +86,8 @@ export class EmployeeComponent implements OnInit {
   }
 
   getEmployee() {
+    this._EmployeeService.array = [];
+    this.listEmp = [];
     this._EmployeeService.GetEmployee().subscribe(res => {
       this._EmployeeService.array = res as Employee[];
       this.listEmp = res as Employee[];
@@ -136,6 +132,36 @@ export class EmployeeComponent implements OnInit {
           });
         }
       })
+    }
+  }
+
+  EmployeeSearch(textSearch:string) {
+    if (textSearch != "") {
+      let text = textSearch.toLowerCase();
+      let arr: Employee[] = [];
+
+      this._EmployeeService.GetEmployee().subscribe(res => {
+        let listEmp = res as Employee[];
+  
+        for (let emp of listEmp) {
+          let username = emp.username_usu.toLowerCase();
+          let job = emp.position_usu.toLowerCase();
+
+          if (username.indexOf(text) >= 0 || job.indexOf(text) >= 0 || job === text) {
+            arr.push(emp);
+          }
+        }
+      }, (err) => {
+        console.log(err);
+        swal.fire(err.name, err.message, 'error');
+      });
+      
+      this.listEmp = [];
+      this.listEmp = arr;
+
+      return false;
+    } else {
+      this.getEmployee();
     }
   }
 }
