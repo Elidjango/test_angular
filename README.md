@@ -7,7 +7,7 @@ It is the creation of an employee registry CRUD.
 # Steps to install
 Download the repository as follows:
 ```
-  $ git clone https://github.com/Elidjango/test_angular.git
+  $ git clone https://github.com/LoretoEliel/test_angular.git
   $ cd test_angular/
 
   $ cd api\
